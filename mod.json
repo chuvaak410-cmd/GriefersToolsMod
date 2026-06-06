@@ -1,0 +1,10 @@
+{
+  "name": "GrifersToolsMod",
+  "displayName": "Grifers Tools Mod",
+  "description": "Набор инструментов для игроков",
+  "author": "Spix",
+  "version": "1.0",
+  "main": "com.spix.grieferstools.GriferTools",
+  "minGameVersion": "154", 
+  "dependencies": []
+}

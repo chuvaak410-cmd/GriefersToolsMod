@@ -1,0 +1,42 @@
+plugins {
+    id 'scala'
+    id 'io.github.goooler.shadow' version '8.1.8' // форк Shadow, совместимый с Gradle 9
+}
+
+group = 'com.yourname'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    // Jitpack не нужен, если используем локальный jar
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala3-library_3:3.3.1'
+
+    // Используем локальный mindustry.jar
+    compileOnly files('lib/Mindustry.jar')
+}
+
+scala {
+    zincVersion = '1.10.0' // рекомендованная для Scala 3
+}
+
+// Fat jar сборка
+shadowJar {
+    archiveBaseName.set('GrifersTools')
+    archiveClassifier.set('')
+    archiveVersion.set('1.0')
+    mergeServiceFiles()
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+}
+
+tasks.build {
+    dependsOn shadowJar
+}
+
+processResources {
+    from('.') {
+        include 'mod.json'
+    }
+}
