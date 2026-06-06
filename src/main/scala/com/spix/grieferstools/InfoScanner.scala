@@ -4,6 +4,8 @@ import arc.Core
 import arc.util.Log
 import mindustry.Vars
 import mindustry.gen.Groups
+import mindustry.ui.dialogs.BaseDialog
+import arc.scene.ui.Label
 
 class InfoScanner {
 
@@ -43,17 +45,30 @@ class InfoScanner {
     info.append("\nPLAYERS\n")
 
     Groups.player.each(p => {
-      val hp =
+    val hp =
         if (p.unit() != null) p.unit().health
         else 0f
 
-      info.append(p.name)
-        .append(" | team: ")
-        .append(p.team)
-        .append(" | hp: ")
-        .append(hp)
-        .append("\n")
-    })
+    info.append("Name: ").append(p.name).append("\n")
+    info.append("ID: ").append(p.id).append("\n")
+
+    try {
+        info.append("UUID: ").append(p.uuid()).append("\n")
+    } catch {
+        case _: Throwable =>
+    }
+
+    info.append("Team: ").append(p.team).append("\n")
+    info.append("HP: ").append(hp).append("\n")
+
+    if (p.unit() != null) {
+        info.append("X: ").append(p.unit().x).append("\n")
+        info.append("Y: ").append(p.unit().y).append("\n")
+        info.append("Unit: ").append(p.unit().`type`.name).append("\n")
+    }
+
+    info.append("\n")
+})
 
     info.append("\nUNITS\n")
 
@@ -74,6 +89,15 @@ class InfoScanner {
     info.append("Width: ").append(Vars.world.width()).append("\n")
     info.append("Height: ").append(Vars.world.height()).append("\n")
 
-    Vars.ui.showInfo(info.toString())
+    val dialog = new BaseDialog("Server Info")
+
+    dialog.cont.pane(t => {
+        t.defaults().left().top()
+        val label = new Label(info.toString())
+        label.setWrap(true)
+        t.add(label).growX().left().top()
+    }).grow()
+    dialog.addCloseButton()
+    dialog.show()
   }
 }
