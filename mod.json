@@ -5,6 +5,7 @@
   "author": "Spix",
   "version": "1.0",
   "main": "com.spix.grieferstools.GriferTools",
-  "minGameVersion": "154", 
-  "dependencies": []
+  "minGameVersion": "154",
+  "dependencies": [],
+  "hidden": true
 }
