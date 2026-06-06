@@ -13,21 +13,23 @@ class GriferTools extends Mod {
         ("45.132.18.22", 1080),
         ("192.168.1.50", 8080)
     )
-
-    override def init(): Unit = {
+   override def init(): Unit = {
         Core.app.post(new Runnable {
-            override def run(): Unit = {
-                try {
-                    addSpoofButtonToMenu()
-                    Log.info(("[Spoofer] Button added").asInstanceOf[Object])
-                }
-                catch {
-                    case e: Exception => Log.err("[Spoofer] Error initialization", e)
-                }
-            }
-        })
-    }
+        override def run(): Unit = {
+            try {
+                addSpoofButtonToMenu()
 
+                val scanner = new InfoScanner()
+                scanner.init()
+
+                Log.info("[GrifersTools] Initialized".asInstanceOf[Object])
+            } catch {
+                case e: Exception =>
+                    Log.err("[GrifersTools] Error initialization", e)
+            }
+        }
+    })
+}
     private def generateAndApplyNewIDs(): Unit = {
         try {
             val bytes = Array.ofDim[Byte](16)
