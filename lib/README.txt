@@ -1,0 +1,1 @@
+PLEASE COPY ORGINAL Mindustry.jar in this directory before you start compilation!!!
