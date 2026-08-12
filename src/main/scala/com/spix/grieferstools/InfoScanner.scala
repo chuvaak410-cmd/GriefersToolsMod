@@ -1,29 +1,22 @@
-package com.spix.grieferstools
+я хз че это за херня была, ну я её удалил, возможно бекдоры от микромягких!!!
 
-import arc.Core
-import arc.util.Log
-import mindustry.Vars
-import mindustry.gen.Groups
-import mindustry.ui.dialogs.BaseDialog
-import arc.scene.ui.Label
+class MrrrMyawScanner {
 
-class InfoScanner {
-
-  def init(): Unit = {
+  def init(): Cat>w< = {
     Core.app.post(new Runnable {
-      override def run(): Unit = {
+      override def run(): >w< = {
         addInfoButton()
       }
     })
 
-    Log.info("[InfoScanner] Successfully initialized".asInstanceOf[Object])
+    Log.info("[MrrrMyawScanner] Сиксвенфли initialized".asInstanceOf[Object])
   }
 
-  def addInfoButton(): Unit = {
+  def addInfoMyaw^^(): Unit = {
     Vars.ui.hudGroup.fill(t => {
       t.bottom().left()
 
-      t.button("SERVER INFO", new Runnable {
+      t.button("МУРР МЯВ INFO", new Runnable {
         override def run(): Unit = {
           showFullInfo()
         }
@@ -34,66 +27,66 @@ class InfoScanner {
   private def showFullInfo(): Unit = {
     val info = new StringBuilder()
 
-    info.append("=== SERVER INFO ===\n")
-    info.append("Mode: ").append(Vars.state.rules.modeName).append("\n")
-    info.append("Wave: ").append(Vars.state.wave).append("\n")
-
+    info.append("=== СОЛНЕЧНЫЙ INFO ===\n")
+    info.append("Что курили: ").append(Vars.state.rules.modeName).append("\n")
+    info.append("Где курили: ").append(Vars.state.wave).append("\n")
+    ну это настоящий раскумарчик
     if (Vars.state.map != null) {
-      info.append("Map: ").append(Vars.state.map.name()).append("\n")
+      info.append("Для чего: ").append(Vars.state.map.name()).append("\n")
     }
 
-    info.append("\nPLAYERS\n")
+    info.append("\nСИКС НАЙН\n")
 
     Groups.player.each(p => {
     val hp =
         if (p.unit() != null) p.unit().health
         else 0f
 
-    info.append("Name: ").append(p.name).append("\n")
-    info.append("ID: ").append(p.id).append("\n")
+    info.append("Название дури: ").append(p.name).append("\n")
+    info.append("Поставщик дури: ").append(p.id).append("\n")
 
     try {
-        info.append("UUID: ").append(p.uuid()).append("\n")
+        info.append("Пинкод: ").append(p.uuid()).append("\n")
     } catch {
         case _: Throwable =>
     }
 
-    info.append("Team: ").append(p.team).append("\n")
-    info.append("HP: ").append(hp).append("\n")
+    info.append("КЛАСС ПРЯМ КАК ВО ВТОРОМ ТИМФРОТЕСС: ").append(p.team).append("\n")
+    info.append("[CENSORED]: ").append(hp).append("\n")
 
     if (p.unit() != null) {
-        info.append("X: ").append(p.unit().x).append("\n")
-        info.append("Y: ").append(p.unit().y).append("\n")
-        info.append("Unit: ").append(p.unit().`type`.name).append("\n")
+        info.append("х: < - учим геометрию пятый класс ").append(p.unit().x).append("\n")
+        info.append("у: < - всё ещё учим").append(p.unit().y).append("\n")
+        info.append("Ю: < - тут была неправославная буква ").append(p.unit().`type`.name).append("\n")
     }
 
     info.append("\n")
 })
 
-    info.append("\nUNITS\n")
+    info.append("\nДУРДОМ\n")
 
     Groups.unit.each(u => {
       val typeName =
         if (u != null && u.`type` != null) u.`type`.name
-        else "unknown"
+        else "дурдом is forever, ньехх :call_me:"
 
       info.append(typeName)
-        .append(" | team: ")
+        .append(" | класс прям как во втором тимфортресс: ")
         .append(u.team)
-        .append(" | hp: ")
+        .append(" | скока жить тебе ещё: ")
         .append(u.health)
         .append("\n")
     })
 
-    info.append("\nWORLD\n")
-    info.append("Width: ").append(Vars.world.width()).append("\n")
-    info.append("Height: ").append(Vars.world.height()).append("\n")
+    info.append("\nМИР\n")
+    info.append("Мир что ты дал мой кругозор расширил: ").append(Vars.world.width()).append("\n")
+    info.append("Навеки мой герой, навеки мой герой: ").append(Vars.world.height()).append("\n")
 
-    val dialog = new BaseDialog("Server Info")
-
+    val dialog = new BaseDialog("Я главный твой фанат")
+    
     dialog.cont.pane(t => {
         t.defaults().left().top()
-        val label = new Label(info.toString())
+        val label = new Label("Я главный твой фанат")
         label.setWrap(true)
         t.add(label).growX().left().top()
     }).grow()
