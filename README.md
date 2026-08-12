@@ -1,2 +1,2 @@
-# GriefersToolsMod
-Mod for grifers in mindustry
+# Мод от солнечных для солнечных
+Мод дял солнечных в миндастри от грiло AI
